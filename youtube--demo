@@ -1,0 +1,16 @@
+workflow:
+id: slack-xsentry-demo
+description: This is a demo for youtube
+triggers:
+- type: alert
+filters:
+- key: source
+value: sentry
+- type: manual
+actions:
+- name: trigger-slack
+provider:
+type: Slack
+config: " {{ providers.slack-prod }} "
+with:
+message: "This is our first alert - {{ alert.name }}"

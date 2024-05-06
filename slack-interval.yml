@@ -1,0 +1,15 @@
+workflow:
+  id: slack-sentry-demo
+  description: Send a slack message when a Sentry alarm is triggered
+  triggers:
+    filters:
+    - key: source
+      value: sentry
+   - type: alert
+  actions:
+  - name: trigger-slack
+    provider:
+      type: slack
+      config: " {{ providers.slack-prod }} "
+      with:
+        message: "Got alarm from sentry! {{ alert.name }}"

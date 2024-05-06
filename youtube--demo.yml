@@ -1,0 +1,16 @@
+workflow:
+id: youtube-demo-workflows
+description: this is a sample demo for contextualizing workflows
+triggers:
+- type: alert
+filters:
+- key: source
+value: sentry
+- type: manual
+actions:
+- name: trigger-slack
+providers:
+type: slack
+config: " {{ providers.slack-prod }} "
+with:
+message: "This is an {{ alert.name }}"

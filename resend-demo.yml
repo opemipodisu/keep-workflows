@@ -1,0 +1,19 @@
+alert:
+  id: id-email-here
+  description: Send an email notification using Resend
+  triggers:
+    - type: alert
+     filters:
+       - key: source
+       value: cloudwatch
+    - type: manual
+  actions:
+  - name: send-email
+    provider:
+      type: resend
+      config: "{{ providers.resend-provider }}"
+      with:
+      _from: "onboarding@resend.dev"
+      to: "opemipooluwatobiloba58@gmail.com"
+      subject: "Hello from Resend Provider"
+      html: "<p>This is the email body.</p>"
